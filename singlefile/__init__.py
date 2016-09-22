@@ -8,10 +8,11 @@ import os
 import json
 import shutil
 import atexit
+import tempfile
 
 import requests
 
-BASE_MODULES_DIR = os.path.join(os.path.expanduser('~'), '.singlefile')
+BASE_MODULES_DIR = tempfile.mkdtemp(prefix='singlefile')
 
 
 @atexit.register
