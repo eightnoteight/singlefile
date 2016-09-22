@@ -1,0 +1,34 @@
+before_script:
+    - "date"
+    - "apt-get update -qy"
+    - "apt-get install -y python3-dev python3-pip"
+    - "pip3 install -r requirements.txt"
+
+after_script:
+    - "date"
+
+job_tests_3.5:
+    image: python:3.5.2
+    stage: test
+    script:
+        - "python3 setup.py install"
+        - "py.test"
+
+job_tests_3.4:
+    image: python:3.4.5
+    stage: test
+    script:
+        - "python3 setup.py install"
+        - "py.test"
+
+pages:
+    image: python:3.5.2
+    script:
+        - "make -C docs html"
+        - "mkdir public"
+        - "cp -rv docs/build/html/* public/"
+    artifacts:
+        paths:
+            - public
+    only:
+        - master
