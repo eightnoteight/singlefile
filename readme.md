@@ -4,7 +4,7 @@
 
 currently only [gist.github.com](https://gist.github.com) is supported
 
-```Python
+```python
 from singlefile.gist.gist2eafebd9fdcb1e39188aeb1e3627e683.pingpong import main
 print(main())
 ```
